@@ -5,18 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/20 12:49:52 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/03/20 13:47:02 by tlemos-m         ###   ########.fr       */
+/*   Created: 2023/03/20 17:09:51 by tlemos-m          #+#    #+#             */
+/*   Updated: 2023/03/21 15:04:59 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
 
 void	check_doubles(char *str)
 {
-	int	j;
 	int	i;
+	int	j;
 
 	i = 0;
 	while (str[i] != '\0')
@@ -35,33 +34,33 @@ void	check_doubles(char *str)
 	return ;
 }
 
-void	check_union(char *s1, char *s2)
+void	ft_union(char *s1, char *s2)
 {
-	int	j;
 	int	i;
+	int	j;
 	int	k;
 
 	i = 0;
-	while (s2[i] != '\0')
+	while (s2[i] != 0)
 	{
 		j = i - 1;
-		while (j > 0)
+		while (j >= 0)
 		{
 			if (s2[i] == s2[j])
 				break ;
 			j--;
 		}
+		k = 0;
 		if (j <= 0)
 		{
-			k = 0;
 			while (s1[k] != '\0')
 			{
-				if (s2[i] == s1[k])
+				if (s1[k] == s2[i])
 					break ;
 				k++;
 			}
 			if (s1[k] == '\0')
-				write(1, &s1[i], 1);
+				write(1, &s2[i], 1);
 		}
 		i++;
 	}
@@ -76,7 +75,7 @@ int	main(int argc, char **argv)
 	else
 	{
 		check_doubles(argv[1]);
-		check_union(argv[1], argv[2]);
+		ft_union(argv[1], argv[2]);
 		return (0);
 	}
 }
