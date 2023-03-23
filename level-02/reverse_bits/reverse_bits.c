@@ -6,7 +6,7 @@
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 12:15:39 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/03/21 13:41:39 by tlemos-m         ###   ########.fr       */
+/*   Updated: 2023/03/23 09:55:08 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,4 @@ unsigned char	reverse_bits(unsigned char octet)
 	}
 	print_bits(bit);
 	return (bit);
-}
-
-int	main(void)
-{
-	reverse_bits(2);
-	write(1, "\n", 1);
-	reverse_bits(4);
-	write(1, "\n", 1);
-	reverse_bits(5);
-	write(1, "\n", 1);
-	reverse_bits(42);
-	write(1, "\n", 1);
-	return (0);
 }
