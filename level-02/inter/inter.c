@@ -1,55 +1,60 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   last_word.c                                        :+:      :+:    :+:   */
+/*   inter.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlemos-m <tlemos-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/23 10:46:29 by tlemos-m          #+#    #+#             */
-/*   Updated: 2023/03/27 16:38:01 by tlemos-m         ###   ########.fr       */
+/*   Created: 2023/03/27 17:01:15 by tlemos-m          #+#    #+#             */
+/*   Updated: 2023/03/27 17:37:27 by tlemos-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-char	*find_last_word(char *str)
+void	check_doubles(char *str, int index)
 {
-	char	*word;
-	int		i;
+	int	j;
 
-	i = 0;
-	word = &str[i];
-	while (str[i] != '\0')
+	j = 0;
+	while (j < index)
 	{
-		if (str[i - 1] == 32 && (str[i] > 32 && str[i] < 127))
-			word = &str[i];
-		i++;
+		if (str[index] == str[j])
+			break ;
+		j++;
 	}
-	return (word);
+	if (j == index)
+		write(1, &str[index], 1);
+	return ;
 }
 
-void	get_last_word(char *str)
+void	inter(char *str1, char *str2)
 {
-	char	*word;
-	int		i;
+	int	i;
+	int	j;
 
 	i = 0;
-	word = find_last_word(str);
-	while (word[i] != '\0')
+	while (str1[i] != '\0')
 	{
-		if (word[i] > 32 && word[i] < 127)
-			write(1, &word[i], 1);
+		j = 0;
+		while (str2[j] != '\0')
+		{
+			if (str1[i] == str2[j])
+			{
+				check_doubles(str1, i);
+				break ;
+			}
+			j++;
+		}
 		i++;
 	}
+	return ;
 }
 
 int	main(int argc, char **argv)
 {
-	if (argc == 2)
-	{
-		get_last_word(argv[1]);
-		write(1, "\n", 1);
-	}
-	else
-		return (write(1, "\n", 1));
+	if (argc == 3)
+		inter(argv[1], argv[2]);
+	write(1, "\n", 1);
+	return (0);
 }
